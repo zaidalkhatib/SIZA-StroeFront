@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="../cssFiles/loginstyle.css" />
+</head>
+<div id="topBar">
+    <table width="100%">
+        <tr>
+            <td width="33.33%">
+                <a href="#"><img src="../images/menuSquare.png" width="60px" height="60px" id="menuItem" /></a>
+            </td>
+            <td width="33.33%">
+                <center>
+                    <a href="index.html"><img src="../images/sziaLogo.png" height="70px" id="menuItem" /></a>
+                </center>
+            </td>
+            <td width="33.33%">
+                <p align="right">
+                    <a href="#"><img src="../images/cart.png" width="70px" height="60px" id="menuItem" /></a>
+                </p>
+            </td>
+        </tr>
+    </table>
+    <ul class="nav">
+        <li><a href="/">Products</a></li>
+        <li><a href="/">Sale</a></li>
+        <li><a href="/contactUs">Contact Us</a></li>
+        <li><a href="/companyInfo">Company Info</a></li>
+        <li><a href="/Faq">FAQ</a></li>
+        <li><a href="/payment">Payment</a></li>
+
+    </ul>
+</div>
+
+<body>
+    <div class="container">
+        <div class="warning">
+            <%- include('./partials/messages.ejs'); %>
+        </div>
+        <form action="/users/login" method="POST">
+            <strong>
+          <div class="baseFont">
+          Log In
+          </div>
+        </strong>
+            <div class="between">
+                <img class="loginimg2" src="../images/user.png" />
+                <label class="baseFont" for="email"> User Email </label>
+                <input type="email" id="emailLogin" name="email" class="form-control" placeholder="Enter Email" required />
+                <br />
+                <img class="loginimg3" src="../images/password.png" />
+                <label for="password" class="baseFont"> Password </label>
+                <input type="password" id="passwordLogin" name="password" class="form-control" required placeholder="Enter Password" />
+
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                <p id="error"></p>
+                <br />
+            </div>
+            <div class="links">
+                <a href="#" class="baseFont">Forget Your Email or Password?</a>
+                <br />
+
+                <a href="/users/register" class="baseFont"> Not a Member Yet?</a>
+            </div>
+        </form>
+    </div>
+    <footer>
+        <b>
+        ©2020 SZIA, Inc. All rights reserved.
+      </b>
+    </footer>
+</body>
+
+
+</html>
