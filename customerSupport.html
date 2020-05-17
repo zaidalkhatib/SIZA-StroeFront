@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>FAQ</title>
+    <meta name="description" content="SZIA Store" />
+    <meta name="author" content="SitePoint" />
+    <link rel="stylesheet" type="text/css" href="cssFiles/index.css" />
+    <script>
+      function supportBot() {
+        var today = new Date();
+
+        var time =
+          today.getHours() +
+          ":" +
+          today.getMinutes() +
+          ":" +
+          today.getSeconds();
+        var dateTime = time;
+        var input_message = document.getElementById("userChat").value;
+        var filter_input = input_message.toLowerCase();
+        //Time
+
+        //Output
+        const target_id = document.getElementById("myList");
+        //New list item (<li>Me:Your_message_typed<li>)
+        let UserInput = document.createElement("li");
+        UserInput.textContent = "[" + dateTime + "]" + "Me:" + input_message;
+        target_id.appendChild(UserInput);
+
+        var keyWords = [
+          ["contact", "/contactUs", "Contact  "],
+          ["frequently asked question", "/FAQ", "FAQ  "],
+        ];
+
+        const target_id2 = document.getElementById("myList");
+        let BritainOutput = document.createElement("li");
+
+        BritainOutput.textContent = "[" + dateTime + "]";
+        target_id2.appendChild(BritainOutput);
+
+        for (referenceRow in keyWords) {
+          if (filter_input.includes(keyWords[referenceRow][0])) {
+            let a = document.createElement("a");
+            var linkText = document.createTextNode(keyWords[referenceRow][2]);
+            a.appendChild(linkText);
+            a.onclick = "method(); return false";
+            a.href = keyWords[referenceRow][1];
+            target_id2.appendChild(a);
+          } else if (filter_input == "") {
+            // if input is empty
+            BritainOutput.textContent =
+              "[" + dateTime + "]" + "SZIA: Try searching agian";
+            target_id2.appendChild(BritainOutput);
+            break;
+          }
+        }
+        if (checkerFound) {
+          console.log(checkerFound);
+          console.log("hello man");
+          BritainOutput.textContent =
+            "[" + dateTime + "]" + "SZIA: Try searching for another keyword";
+          target_id2.appendChild(BritainOutput);
+        }
+      }
+    </script>
+    <style>
+      .statement-container {
+        line-height: 1.6em;
+        font-size: 16px;
+        font-weight: 300;
+        letter-spacing: 0.1em;
+        word-spacing: 0.5em;
+        border: 5px #ccc solid;
+        border-radius: 80px;
+        text-decoration: none;
+        padding: 40px;
+        margin-top: 2em;
+        margin-right: 2em;
+        margin-left: 2em;
+        margin-bottom: 2em;
+      }
+
+      .statement-container ul {
+        list-style: none;
+      }
+    </style>
+  </head>
+
+  <div id="topBar">
+    <table width="100%">
+      <tr>
+        <td width="33.33%">
+          <a href="#"
+            ><img
+              src="images/menuSquare.png"
+              width="60px"
+              height="60px"
+              id="menuItem"
+          /></a>
+        </td>
+        <td width="33.33%">
+          <center>
+            <a href="index.html"
+              ><img src="images/sziaLogo.png" height="70px" id="menuItem"
+            /></a>
+          </center>
+        </td>
+        <td width="33.33%">
+          <p align="right">
+            <a href="#"
+              ><img
+                src="images/cart.png"
+                width="70px"
+                height="60px"
+                id="menuItem"
+            /></a>
+          </p>
+        </td>
+      </tr>
+    </table>
+    <ul class="nav">
+      <li><a href="/">Products</a></li>
+      <li><a href="/">Sale</a></li>
+      <li><a href="/contactUs">Contact Us</a></li>
+      <li><a href="/companyInfo">Company Info</a></li>
+      <li><a href="/Faq">FAQ</a></li>
+      <li><a href="/payment">Payment</a></li>
+      <li><a href="/customerSupport">Customer Support</a></li>
+    </ul>
+  </div>
+
+  <body>
+    <div id="switchControl" class="statement-container">
+      <h3>SZIA:How can we help?</h3>
+      <ul id="myList"></ul>
+      <input id="userChat" placeholder="Message" />
+      <button onclick="supportBot()">Send Message</button>
+    </div>
+  </body>
+  <footer>
+    <center>
+      <b>
+        ©2020 SZIA, Inc. All rights reserved.
+      </b>
+    </center>
+  </footer>
+</html>

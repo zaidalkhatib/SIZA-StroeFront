@@ -1,79 +1,109 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <title>Contact Us</title>
     <meta name="description" content="SZIA Store" />
     <meta name="author" content="SitePoint" />
-    <link rel="stylesheet" href="cssFiles/index.css">
+    <link rel="stylesheet" href="cssFiles/index.css" />
     <script>
-        function checkEmail() {
-            var x = document.getElementById("eMail").value;
-            //var x = "test";
-            if (x.includes(" ")) {
-                alert("You cannot have a space in your email.")
-            }
-
-            var validEmailAmp = x.includes("@");
-            var validEmailDot = x.includes(".");
-            var boolTest = validEmailAmp & validEmailDot;
-
-            if (!boolTest) {
-                alert("Your email is missing either an at symbol(@) or a period(.).");
-            }
+      function checkEmail() {
+        var x = document.getElementById("eMail").value;
+        //var x = "test";
+        if (x.includes(" ")) {
+          alert("You cannot have a space in your email.");
         }
+
+        var validEmailAmp = x.includes("@");
+        var validEmailDot = x.includes(".");
+        var boolTest = validEmailAmp & validEmailDot;
+
+        if (!boolTest) {
+          alert("Your email is missing either an at symbol(@) or a period(.).");
+        }
+      }
     </script>
-</head>
-<div id="topBar">
+  </head>
+  <div id="topBar">
     <table width="100%">
-        <tr>
-            <td width=33.33%>
-                <a href="#"><img src="images/menuSquare.png" width=60px height=60px id="menuItem"></a>
-            </td>
-            <td width=33.33%>
-                <center>
-                    <a href="index.html"><img src="images/sziaLogo.png" height=70px id="menuItem"></a>
-                </center>
-            </td>
-            <td width=33.33%>
-                <p align="right">
-                    <a href="#"><img src="images/cart.png" width=70px height=60px id="menuItem"></a>
-                </p>
-            </td>
-        </tr>
+      <tr>
+        <td width="33.33%">
+          <a href="#"
+            ><img
+              src="images/menuSquare.png"
+              width="60px"
+              height="60px"
+              id="menuItem"
+          /></a>
+        </td>
+        <td width="33.33%">
+          <center>
+            <a href="index.html"
+              ><img src="images/sziaLogo.png" height="70px" id="menuItem"
+            /></a>
+          </center>
+        </td>
+        <td width="33.33%">
+          <p align="right">
+            <a href="#"
+              ><img
+                src="images/cart.png"
+                width="70px"
+                height="60px"
+                id="menuItem"
+            /></a>
+          </p>
+        </td>
+      </tr>
     </table>
     <ul class="nav">
-        <li><a href="/">Products</a></li>
-        <li><a href="/">Sale</a></li>
-        <li><a href="/contactUs">Contact Us</a></li>
-        <li><a href="/companyInfo">Company Info</a></li>
-        <li><a href="/Faq">FAQ</a></li>
-        <li><a href="/payment">Payment</a></li>
-
+      <li><a href="/">Products</a></li>
+      <li><a href="/">Sale</a></li>
+      <li><a href="/contactUs">Contact Us</a></li>
+      <li><a href="/companyInfo">Company Info</a></li>
+      <li><a href="/Faq">FAQ</a></li>
+      <li><a href="/payment">Payment</a></li>
+      <li><a href="/customerSupport">Customer Support</a></li>
     </ul>
-</div>
+  </div>
 
-<body>
+  <body>
     <div class="login-page">
-        <div class="form">
-            <div class="skrong">Contact Us</div>
-            <form class="register-form" action="/contactUs" method="POST">
-                <input type="text" placeholder="Full Name" required name="name" />
-                <input type="text" placeholder="Email" id="eMail" name="email" required />
-                <input type="orderNum" id="pass" name="orderNumber" required placeholder="Order Number" minlength="10" />
-                <textarea class="textBox" name="subject" placeholder="Place your thoughts here" required></textarea>
-                <button class="button button1" type="submit">Submit</button>
-            </form>
-        </div>
+      <div class="form">
+        <div class="skrong">Contact Us</div>
+        <form class="register-form" action="/contactUs" method="POST">
+          <input type="text" placeholder="Full Name" required name="name" />
+          <input
+            type="text"
+            placeholder="Email"
+            id="eMail"
+            name="email"
+            required
+          />
+          <input
+            type="orderNum"
+            id="pass"
+            name="orderNumber"
+            required
+            placeholder="Order Number"
+            minlength="10"
+          />
+          <textarea
+            class="textBox"
+            name="subject"
+            placeholder="Place your thoughts here"
+            required
+          ></textarea>
+          <button class="button button1" type="submit">Submit</button>
+        </form>
+      </div>
     </div>
-</body>
-<footer>
+  </body>
+  <footer>
     <center>
-        <b>
-            ©2020 SZIA, Inc. All rights reserved.
-        </b>
+      <b>
+        ©2020 SZIA, Inc. All rights reserved.
+      </b>
     </center>
-</footer>
-
+  </footer>
 </html>
