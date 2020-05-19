@@ -5,6 +5,7 @@
     <title>Company Information</title>
     <meta name="description" content="SZIA Store" />
     <meta name="author" content="SitePoint" />
+    <link rel="stylesheet" type="text/css" href="cssFiles/dark.css" />
     <style>
       #PanelNavigation {
         display: none;
@@ -20,7 +21,6 @@
         transition: all ease-in-out 200ms;
         -webkit-transition: all ease-in-out 200ms;
       }
-
       .mob-nav a {
         color: white;
         text-decoration: none;
@@ -37,16 +37,14 @@
         list-style: none;
         margin-bottom: 80px;
       }
-      /*TOP NAV PROPERTIES START*/
 
+      /*TOP NAV PROPERTIES START*/
       #topBar table {
         width: 100%;
       }
-
       #topBar table td {
         width: 33.33%;
       }
-
       #topBar p {
         text-align: right;
       }
@@ -64,23 +62,19 @@
         width: 60px;
         height: 60px;
       }
-
       #BrandLogo {
         height: 70px;
       }
-
       #topBar {
         position: -webkit-sticky;
         position: sticky;
         top: 0;
         background: white;
       }
-
       #menuItem:hover {
         filter: invert(40%);
         transition: 0.1s;
       }
-
       .nav {
         font-family: -apple-system, BlinkMacSystemFont, sans-serif;
         overflow: hidden;
@@ -91,11 +85,9 @@
         text-align: center;
         font-size: 18px;
       }
-
       .nav li {
         display: inline;
       }
-
       .nav a {
         float: none;
         display: inline-block;
@@ -103,11 +95,11 @@
         padding: 13px 40px;
         color: white;
       }
-
       .nav a:hover {
         background-color: dimgrey;
         transition: 0.1s;
       }
+
       /*TOP NAV PROPERTIES END*/
 
       .chat-container {
@@ -124,20 +116,16 @@
         bottom: 0;
         right: 0;
       }
-
       .chat-container li {
         padding-left: 0;
       }
-
       .chat-container a {
         color: darkblue;
       }
-
       .chat-container ul {
         padding-left: 0%;
         list-style: none;
       }
-
       .chat-container input {
         width: 100%;
       }
@@ -157,17 +145,14 @@
         margin-left: 2em;
         margin-bottom: 2em;
       }
-
       .statement-container h1 {
         text-align: center;
       }
-
       table.table_data td {
         padding-right: 100px;
         border-bottom: dotted 1px #333;
       }
       /*Overwrite rules for smaller screen */
-
       @media only screen and (max-width: 600px) {
         .chat-container {
           display: none;
@@ -186,10 +171,98 @@
         table.table_data td {
           padding-right: 15px;
         }
+        
       }
     </style>
-  </head>
+    <script>
+      function openForm() {
+        document.getElementById("switchControl").style.display = "block";
+      }
+      function closeForm() {
+        document.getElementById("switchControl").style.display = "none";
+      }
 
+      function supportBot() {
+        var today = new Date();
+
+        var time =
+          today.getHours() +
+          ":" +
+          today.getMinutes() +
+          ":" +
+          today.getSeconds();
+        var dateTime = time;
+        console.log(dateTime);
+
+        var input_message = document.getElementById("userChat").value;
+        var filter_input = input_message.toLowerCase();
+
+        const target_id = document.getElementById("myList");
+        //New list item (<li>Me:Your_message_typed<li>)
+        let UserInput = document.createElement("li");
+        UserInput.textContent = "[" + dateTime + "]" + "Me:" + input_message;
+        target_id.appendChild(UserInput);
+
+        var keyWords = [
+          ["website", "#table_data", "General Info  "],
+          ["email", "#table_data", "General Info  "],
+          ["finance", "#finance_data", "Financials  "],
+        ];
+
+        const target_id2 = document.getElementById("myList");
+        let BritainOutput = document.createElement("li");
+
+        BritainOutput.textContent =
+          "[" +
+          dateTime +
+          "]" +
+          "SZIA: You might find any of the following helpful:";
+        target_id2.appendChild(BritainOutput);
+
+        for (referenceRow in keyWords) {
+          setTimeout(function () {
+            console.log("delay .5s print");
+          }, 500);
+
+          if (filter_input.includes(keyWords[referenceRow][0])) {
+            checkerFound = false;
+            let a = document.createElement("a");
+            var linkText = document.createTextNode(keyWords[referenceRow][2]);
+            a.appendChild(linkText);
+            a.onclick = "method(); return false";
+            a.href = keyWords[referenceRow][1];
+            target_id2.appendChild(a);
+            checkerFound = false;
+          } else if (filter_input == "") {
+            // if input is empty
+            BritainOutput.textContent =
+              "[" + dateTime + "]" + "SZIA: Try searching for a keyword";
+            target_id2.appendChild(BritainOutput);
+            break;
+          }
+        }
+        if (checkerFound) {
+          console.log(checkerFound);
+          console.log("hello man");
+          BritainOutput.textContent =
+            "[" + dateTime + "]" + "SZIA: Try searching for another keyword";
+          target_id2.appendChild(BritainOutput);
+        }
+      }
+      var toggleStatus = 1; //Toggle Status 1 means "On" , 0 is "OFF"
+
+      function toggleSideNav() {
+        if (toggleStatus == 1) {
+          document.getElementById("PanelNavigation").style.display = "block";
+          document.getElementById("PanelNavigation").style.left = "-240px";
+          toggleStatus = 0;
+        } else if (toggleStatus == 0) {
+          document.getElementById("PanelNavigation").style.left = "0px";
+          toggleStatus = 1;
+        }
+      }
+    </script>
+  </head>
   <body>
     <div id="topBar">
       <table width="100%">
@@ -213,13 +286,13 @@
           </td>
           <td width="33.33%">
             <p align="right">
-<!--               <a href="#"
+              <a href="#"
                 ><img
                   src="images/cart.png"
                   width="70px"
                   height="60px"
                   id="menuItem"
-              /></a> -->
+              /></a>
             </p>
           </td>
         </tr>
@@ -227,28 +300,39 @@
       <ul class="nav">
         <li><a href="index.html">Products</a></li>
         <li><a href="index.html">Sale</a></li>
-        <li><a href="/contactUs">Contact Us</a></li>
-        <li><a href="/companyInfo">Company Info</a></li>
-        <li><a href="/Faq">FAQ</a></li>
-<!--         <li><a href="/payment">Payment</a></li> -->
-        <li><a href="/customerSupport">Customer Support</a></li>
+        <li><a href="contactUs.html">Contact Us</a></li>
+        <li><a href="companyInfo.html">Company Info</a></li>
+        <li><a href="Faq.html">FAQ</a></li>
+        <li><a href="payment.html">Payment</a></li>
+        <li><a href="login.html">Login</a></li>
       </ul>
     </div>
-
+    <body
+    id="darkxlight">  
+    <header>
+        <button onclick="darkxlight()"><img draggable="false" role="img" class="emoji" alt="🌓" 
+            src="https://s.w.org/images/core/emoji/12.0.0-1/svg/1f313.svg"> <b>Night|Day Mode</b></button>
+    </header>
     <nav id="PanelNavigation">
-      <ul class="nav">
-        <li><a href="/">Products</a></li>
-        <li><a href="/">Sale</a></li>
-        <li><a href="/contactUs">Contact Us</a></li>
-        <li><a href="/companyInfo">Company Info</a></li>
-        <li><a href="/Faq">FAQ</a></li>
-        <li><a href="/payment">Payment</a></li>
-        <li><a href="/customerSupport">Customer Support</a></li>
+      <ul class="mob-nav">
+        <li><a href="index.html">Products</a></li>
+        <li><a href="index.html">Sale</a></li>
+        <li><a href="contactUs.html">Contact Us</a></li>
+        <li><a href="companyInfo.html">Company Info</a></li>
+        <li><a href="Faq.html">FAQ</a></li>
+        <li><a href="payment.html">Payment</a></li>
+        <li><a href="login.html">Login</a></li>
       </ul>
     </nav>
 
     <br />
-
+    <div id="switchControl" class="chat-container">
+      <button class="chat" onclick="closeForm()">Close Chat</button>
+      <h3>SZIA:How can we help?</h3>
+      <ul id="myList"></ul>
+      <input id="userChat" placeholder="Enter What you're looking for" />
+      <button onclick="supportBot()">Send Message</button>
+    </div>
     <div class="statement-container">
       <h1><i>Mission Statement </i></h1>
       <hr />
@@ -379,6 +463,7 @@
       </table>
     </div>
   </body>
+  <script src="darkMode.js"></script>
   <footer>
     ©2020 SZIA, Inc. All rights reserved.
   </footer>
