@@ -1,0 +1,40 @@
+.dark {
+    background-color: black;
+    color: white;
+
+  }
+  img.emoji {
+    -webkit-user-drag: none;
+    height: 40px;
+    font-weight: bold;
+ 
+}    
+button {
+    align-items: flex-start;
+    text-align: center;
+    cursor: default;
+    color: white;
+    padding-top: 2px;
+    padding-right: 6px;
+    padding-bottom: 3px;
+    padding-left: 6px;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-top-color:white;
+    border-right-color: white;
+    border-bottom-color:white;
+    border-left-color: white;
+    background-color: black;
+    box-sizing: border-box;
+    margin: 0;
+    
+}
+.title p{
+    background-color: white;
+    color:black;
+    font-style: italic;
+    font-size: 45px;  
+}
+* {box-sizing: border-box;}
