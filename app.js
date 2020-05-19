@@ -1,4 +1,5 @@
 const express = require("express");
+const socket = require("socket.io");
 const expressLayouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
 const app = express();
@@ -14,9 +15,32 @@ app.set("view engine", "handlebars");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+var io = socket(
+  app.listen(PORT, function () {
+    console.log("ok");
+  })
+);
+
+//Instance of the Socket passed by individual Client.CallBack function
+io.on("connection", function (socket) {
+  //Each Client with Unique ID
+  const sessionID = socket.id;
+  console.log(sessionID);
+
+  //Awaits for this to trigger from Front-End "Click"Listener
+  socket.on("chat", function (data) {
+    io.sockets.emit("chat", data);
+  });
+});
+
 app.get("/home", function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });
+
+app.get("/assistant", function (req, res) {
+  res.sendFile(__dirname + "/assistant.html");
+});
+
 app.get("/login", function (req, res) {
   res.sendFile(__dirname + "/login.ejs");
 });
@@ -125,4 +149,5 @@ app.set("view engine", "ejs");
 app.use("/", require("./routes/index"));
 app.use("/dashboard", require("./routes/index"));
 app.use("/users", require("./routes/users"));
-app.listen(PORT, console.log(`we are live on ${PORT}`));
+
+//app.listen(PORT, console.log(`we are live on ${PORT}`));
