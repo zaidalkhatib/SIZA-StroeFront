@@ -29,8 +29,8 @@
         target_id.appendChild(UserInput);
 
         var keyWords = [
-          ["contact", "/contactUs", "Contact  "],
-          ["frequently asked question", "/FAQ", "FAQ  "],
+          ["contact", "/contactUs", "Contact"],
+          ["question", "/FAQ", "Freuently Asked Question "],
         ];
 
         const target_id2 = document.getElementById("myList");
@@ -39,8 +39,10 @@
         BritainOutput.textContent = "[" + dateTime + "]";
         target_id2.appendChild(BritainOutput);
 
+        checkerFound = true;
         for (referenceRow in keyWords) {
           if (filter_input.includes(keyWords[referenceRow][0])) {
+            checkerFound = false;
             let a = document.createElement("a");
             var linkText = document.createTextNode(keyWords[referenceRow][2]);
             a.appendChild(linkText);
@@ -55,9 +57,12 @@
             break;
           }
         }
+        if (!checkerFound) {
+          BritainOutput.textContent =
+            "[" + dateTime + "]" + "SZIA: This might help^";
+          target_id2.appendChild(BritainOutput);
+        }
         if (checkerFound) {
-          console.log(checkerFound);
-          console.log("hello man");
           BritainOutput.textContent =
             "[" + dateTime + "]" + "SZIA: Try searching for another keyword";
           target_id2.appendChild(BritainOutput);
@@ -83,6 +88,9 @@
 
       .statement-container ul {
         list-style: none;
+      }
+      .statement-container a {
+        color: blue;
       }
     </style>
   </head>
